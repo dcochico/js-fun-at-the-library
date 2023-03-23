@@ -1,37 +1,8 @@
-// function createTitle() {
-  
-// }
-
-// module.exports = {
-//   createTitle,
-//   // buildMainCharacter,
-//   // saveReview,
-//   // calculatePageCount,
-//   // writeBook,
-//   // editBook
-// }
-
 function createTitle(bookTitle) {
-  var randomInteger = Math.floor(Math.random() * 100);
-  randomInteger;
-  if (0 <= randomInteger && randomInteger <= 25) {
-    modifiedTitle = `The ${bookTitle}`;
-    return modifiedTitle;
-  } else if (25 < randomInteger && randomInteger <= 50) {
-    modifiedTitle = `Dancing ${bookTitle}`;
-    return modifiedTitle;
-  } else if (50 < randomInteger && randomInteger <= 75) {
-    modifiedTitle = `${bookTitle} in the Summer`;
-    return modifiedTitle;
-  } else {
-    modifiedTitle = `Teenage ${bookTitle}`;
-    return modifiedTitle;
-  }
+  var modifiedTitle = `The ${bookTitle}`;
+  return modifiedTitle;
 }
 
-// console.log(createTitle('Harry Potter'));
-// console.log(createTitle('Harry Potter'));
-// console.log(createTitle('Harry Potter'));
 // console.log(createTitle('Harry Potter'));
 
 
@@ -76,48 +47,45 @@ function saveReview(newReview, bookReviews) {
 
 
 function calculatePageCount(bookTitle) {
-  var alphabet = 'abcdefghijklmnopqrstuvwxyz';
-  var characterSplit = bookTitle.split('');
-  for (var i = 0; i < characterSplit.length; i++) {
-    if (!alphabet.includes(characterSplit[i].toLowerCase())) {
-      delete characterSplit[i];
-    }
-  }
-  pageCount = characterSplit.join('').length * 20;
-  return pageCount;
+  return bookTitle.length * 20;
 }
 
-// console.log(calculatePageCount("Harry Potter and the Sorcerer's Stone"));
-// console.log(calculatePageCount("Absalom, Absalom!"));
+// console.log(calculatePageCount("Teenage Ghoul"));
+// console.log(calculatePageCount("Dragon in the Summer"));
 
 
 
 
 
-function writeBook(bookTitle, heroName, heroAge, heroPronouns, bookGenre) {
+function writeBook(bookTitle, bookCharacter, bookGenre) {
   var book = {
-    Title: createTitle(bookTitle),
-    mainCharacter: buildMainCharacter(heroName, heroAge, heroPronouns),
+    title: bookTitle,
+    mainCharacter: bookCharacter,
     pageCount: calculatePageCount(bookTitle),
-    Genre: bookGenre
+    genre: bookGenre
   }
   return book;
 }
 
-// console.log(writeBook("Harry Potter", "Harry", 11, "he/him/his", "fantasy"));
+// console.log(writeBook("Teenage Ghoul", ["Vassya", 16, "she/her"], "fantasy"));
 
 
 
 
 
-function editBook(bookTitle, heroName, heroAge, heroPronouns, bookGenre) {
-  var book = {
-    Title: createTitle(bookTitle),
-    mainCharacter: buildMainCharacter(heroName, heroAge, heroPronouns),
-    pageCount: Math.round(calculatePageCount(bookTitle) * 0.75),
-    Genre: bookGenre
-  }
-  return book;
+function editBook(book) {
+  return book.pageCount *= .75;
 }
 
-console.log(editBook("Harry Potter", "Harry", 11, "he/him/his", "fantasy"));
+
+
+
+
+module.exports = {
+  createTitle,
+  buildMainCharacter,
+  saveReview,
+  calculatePageCount,
+  writeBook,
+  editBook
+}
