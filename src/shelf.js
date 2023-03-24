@@ -1,23 +1,3 @@
-var hyperion = {
-  title: "Hyperion",
-  mainCharacter: { name: "The Shrike", age: null, pronouns: "they" },
-  pageCount: 482,
-  genre: "sciFi"
-};
-var dune = {
-  title: "Dune",
-  mainCharacter: { name: "Paul", age: 15, pronouns: "he/him" },
-  pageCount: 421,
-  genre: "sciFi"
-};
-var endersGame = {
-  title: "Ender's Game",
-  mainCharacter: { name: "Andrew 'Ender' Wiggin", age: 10, pronouns: "he/him" },
-  pageCount: 324,
-  genre: "sciFi"
-};
-var sciFiShelf = [hyperion, dune, endersGame];
-
 function shelfBook(book, shelf) {
   if (shelf.length < 3) {
     shelf.unshift(book);
